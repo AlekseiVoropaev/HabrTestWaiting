@@ -1,5 +1,4 @@
 package com.example.habrtestwaiting;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,7 +20,6 @@ public class MainPageTest {
         ChromeOptions options = new ChromeOptions();
         // Fix the issue https://github.com/SeleniumHQ/selenium/issues/11750
         options.addArguments("--remote-allow-origins=*");
-       // options.setPageLoadStrategy(PageLoadStrategy.EAGER);
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
@@ -47,7 +44,7 @@ public class MainPageTest {
         driver.get("https://demoqa.com/dynamic-properties");
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(6));
         WebElement visibleAfterButton = driver.findElement(By.cssSelector("#visibleAfter"));
-       // wait.until(ExpectedConditions.visibilityOf(visibleAfterButton));
+        wait.until(ExpectedConditions.visibilityOf(visibleAfterButton));
         assertTrue(visibleAfterButton.isDisplayed()," Кнопка не видна ");
     }
 
